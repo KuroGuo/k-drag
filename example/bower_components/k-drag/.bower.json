@@ -18,11 +18,11 @@
     "test",
     "tests"
   ],
-  "_release": "c3f6195a73",
+  "_release": "a34832cce6",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "c3f6195a7363cee92435937e5d5f70f9b1fbe6dc"
+    "commit": "a34832cce6fde46a4854e1e61540c4c7dabd7638"
   },
   "_source": "git://github.com/KuroGuo/k-drag.git",
   "_target": "*",
