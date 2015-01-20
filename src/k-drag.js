@@ -138,7 +138,7 @@
       }
 
       function newEvent(name, e) {
-        var _event = new Event(name);
+        var _event = document.createEvent(name);
 
         _event.pageX = pageXY.x;
         _event.pageY = pageXY.y;
