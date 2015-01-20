@@ -138,7 +138,8 @@
       }
 
       function newEvent(name, e) {
-        var _event = document.createEvent(name);
+        var _event = document.createEvent('HTMLEvents');
+        _event.iniEvent(name, false, true);
 
         _event.pageX = pageXY.x;
         _event.pageY = pageXY.y;
