@@ -1,6 +1,6 @@
 ## K-drag
 
-### Quick Examples
+### Quick Example
 
 ```html
 <style>
