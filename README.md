@@ -1,5 +1,11 @@
 ## K-drag
 
+### Install
+
+```bash
+$ bower install k-drag
+```
+
 ### Quick Example
 
 <a href="http://kuroguo.github.io/k-drag/example/" target="_blank">example</a>
