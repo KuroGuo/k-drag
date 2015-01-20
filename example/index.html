@@ -24,15 +24,16 @@
       cursor: default;
     }
   </style>
+  <script>
+    document.addEventListener('touchmove', function (e) {
+      e.preventDefault();
+    });
+  </script>
 </head>
 <body>
   <div id="box"></div>
   <script src="bower_components/k-drag/dist/k-drag.js"></script>
   <script>
-    document.addEventListener('touchmove', function (e) {
-      e.preventDefault();
-    });
-
     var box = document.querySelector('#box');
 
     kDrag.bind(box);
