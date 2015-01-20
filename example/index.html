@@ -21,9 +21,6 @@
       height: 60px;
       background-color: #369;
       cursor: default;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      transform: translateZ(0);
     }
   </style>
 </head>
@@ -45,7 +42,7 @@
       x += e.stepX;
       y += e.stepY;
 
-      var transform = 'translate(' + x + 'px, ' + y + 'px)';
+      var transform = 'translateZ(0)translate(' + x + 'px, ' + y + 'px)';
 
       if (box.style.transform !== undefined) {
         box.style.transform = transform;
