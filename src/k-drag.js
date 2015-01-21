@@ -178,6 +178,7 @@
 
         _event.ctrlKey = e.ctrlKey;
         _event.dragTarget = target;
+        _event.originalEvent = e;
 
         return _event;
       }
