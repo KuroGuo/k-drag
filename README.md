@@ -1,4 +1,4 @@
-## K-drag
+## K-Drag
 
 High performance drag component.
 
