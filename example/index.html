@@ -26,34 +26,34 @@
   </style>
   <script>
     document.addEventListener('touchmove', function (e) {
-      e.preventDefault();
-    });
+      e.preventDefault()
+    })
   </script>
 </head>
 <body>
   <div id="box"></div>
   <script src="bower_components/k-drag/dist/k-drag.js"></script>
   <script>
-    var box = document.querySelector('#box');
+    var box = document.querySelector('#box')
 
-    kDrag.bind(box);
+    kDrag.bind(box)
 
-    var x = 0, y = 0;
+    var x = 0, y = 0
 
     box.addEventListener('k.drag', function (e) {
-      x += e.stepX;
-      y += e.stepY;
+      x += e.stepX
+      y += e.stepY
 
-      var transform = 'translateZ(0)translate(' + x + 'px, ' + y + 'px)';
+      var transform = 'translateZ(0)translate(' + x + 'px, ' + y + 'px)'
 
       if (box.style.transform !== undefined) {
-        box.style.transform = transform;
+        box.style.transform = transform
       } else if (box.style.webkitTransform !== undefined) {
-        box.style.webkitTransform = transform;
+        box.style.webkitTransform = transform
       } else if (box.style.mozTransform !== undefined) {
-        box.style.mozTransform = transform;
+        box.style.mozTransform = transform
       }
-    });
+    })
   </script>
 </body>
 </html>
