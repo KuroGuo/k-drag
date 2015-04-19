@@ -24,26 +24,26 @@ $ bower install k-drag
 <div id="box"></div>
 <script src='k-drag.js'></script>
 <script>
-  var box = document.querySelector('#box');
+  var box = document.querySelector('#box')
 
-  kDrag.bind(box);
+  kDrag.bind(box)
 
-  var x = 0, y = 0;
+  var x = 0, y = 0
 
   box.addEventListener('k.dragstart', function () {
-    console.log('dragstart');
-  });
+    console.log('dragstart')
+  })
 
   box.addEventListener('k.drag', function (e) {
-    x += e.stepX;
-    y += e.stepY;
+    x += e.stepX
+    y += e.stepY
 
-    box.style.left = x + 'px';
-    box.style.top = y + 'px';
-  });
+    box.style.left = x + 'px'
+    box.style.top = y + 'px'
+  })
 
   box.addEventListener('k.dragend', function () {
-    console.log('dragend');
-  });
+    console.log('dragend')
+  })
 </script>
 ```
