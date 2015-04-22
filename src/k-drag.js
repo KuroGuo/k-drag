@@ -1,8 +1,8 @@
 ;(function (window, document) { 'use strict'
-  window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame 
+  var requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame 
                               || window.mozRequestAnimationFrame || window.msRequestAnimationFrame
 
-  window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame
+  var cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame
                               || window.mozCancelAnimationFrame || window.msCancelAnimationFrame
 
   var kDrag = {}
@@ -83,9 +83,14 @@
           || Math.abs(pageXY.y - pointerdownPageXY.y) >= options.adsorb) {
             dragFrame()
             state = 2
-            _event = newEvent('k.dragstart', e)
+            _event = newEvent('k.dragstart', dragEventArg)
             element.dispatchEvent(_event)
           }
+        }
+
+        if (state === 2) {
+          _event = newEvent('k.dragSync', dragEventArg)
+          element.dispatchEvent(_event)
         }
       }
 
@@ -116,11 +121,11 @@
           lastFrameTime = time
         }
 
-        requestedFrameToken = window.requestAnimationFrame(dragFrame)
+        requestedFrameToken = requestAnimationFrame(dragFrame)
       }
 
       function dragend(e) {
-        window.cancelAnimationFrame(requestedFrameToken)
+        cancelAnimationFrame(requestedFrameToken)
         if (e && e.type === 'touchend' && e.changedTouches[0].target !== target)
           return
 
