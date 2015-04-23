@@ -47,3 +47,10 @@ $ bower install k-drag
   })
 </script>
 ```
+
+### Events
+
+#### k.dragstart
+#### k.drag
+#### k.dragSync(sync version of k.drag, k.drag is a async event)
+#### k.dragend
