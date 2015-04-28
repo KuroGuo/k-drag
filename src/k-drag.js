@@ -37,9 +37,9 @@
 
     function dragStart(e) {
       var state = 0 // 0: 初始状态, 1: 按下, 2: dragging
-      var pointerdownClientXY // 按下时的ClientXY
-      var clientXY // 拖动时和拖动结束时的ClientXY
-      var lastFrameClientXY, lastFrameTime
+      var pointerdownPageXY // 按下时的PageXY
+      var pageXY // 拖动时和拖动结束时的PageXY
+      var lastFramePageXY, lastFrameTime
       var dragEventArg, vx, vy
       var target // 拖动的目标element，非常重要！！！
       var element = e.currentTarget
@@ -50,7 +50,7 @@
         return
       }
       
-      lastFrameClientXY = clientXY = pointerdownClientXY = getEventClientXY(e)
+      lastFramePageXY = pageXY = pointerdownPageXY = getEventPageXY(e)
       target = e.target
       state = 1
 
@@ -72,15 +72,15 @@
           return
         }
 
-        clientXY = getEventClientXY(e)
+        pageXY = getEventPageXY(e)
 
         var _event
 
         dragEventArg = e
 
         if (state === 1) {
-          if (Math.abs(clientXY.x - pointerdownClientXY.x) >= options.adsorb
-          || Math.abs(clientXY.y - pointerdownClientXY.y) >= options.adsorb) {
+          if (Math.abs(pageXY.x - pointerdownPageXY.x) >= options.adsorb
+          || Math.abs(pageXY.y - pointerdownPageXY.y) >= options.adsorb) {
             dragFrame()
             state = 2
             _event = newEvent('k.dragstart', dragEventArg)
@@ -99,8 +99,8 @@
         var newVx, newVy
 
         if (state === 2) {
-          newVx = (clientXY.x - lastFrameClientXY.x) / (time - lastFrameTime || 17)
-          newVy = (clientXY.y - lastFrameClientXY.y) / (time - lastFrameTime || 17)
+          newVx = (pageXY.x - lastFramePageXY.x) / (time - lastFrameTime || 17)
+          newVy = (pageXY.y - lastFramePageXY.y) / (time - lastFrameTime || 17)
           if (Math.abs(newVx) >= Math.abs(vx || 0) || Math.abs(newVx - (vx || 0)) > Math.abs(vx || 0)) {
             vx = newVx
           } else {
@@ -112,12 +112,12 @@
             vy = vy * 0.7 + newVy * 0.3
           }
 
-          if (clientXY.x !== lastFrameClientXY.x || clientXY.y !== lastFrameClientXY.y) {
+          if (pageXY.x !== lastFramePageXY.x || pageXY.y !== lastFramePageXY.y) {
             _event = newEvent('k.drag', dragEventArg)
             element.dispatchEvent(_event)
           }
 
-          lastFrameClientXY = clientXY
+          lastFramePageXY = pageXY
           lastFrameTime = time
         }
 
@@ -131,7 +131,7 @@
 
         var _event
         if (state === 2) {
-          clientXY = getEventClientXY(e)
+          pageXY = getEventPageXY(e)
 
           _event = newEvent('k.dragend', e)
          element.dispatchEvent(_event)
@@ -152,12 +152,12 @@
         var _event = document.createEvent('Event')
         _event.initEvent(name, false, false)
 
-        _event.clientX = clientXY.x
-        _event.clientY = clientXY.y
-        _event.deltaX = (clientXY.x - pointerdownClientXY.x)
-        _event.deltaY = (clientXY.y - pointerdownClientXY.y)
-        _event.stepX = clientXY.x - lastFrameClientXY.x
-        _event.stepY = clientXY.y - lastFrameClientXY.y
+        _event.pageX = pageXY.x
+        _event.pageY = pageXY.y
+        _event.deltaX = (pageXY.x - pointerdownPageXY.x)
+        _event.deltaY = (pageXY.y - pointerdownPageXY.y)
+        _event.stepX = pageXY.x - lastFramePageXY.x
+        _event.stepY = pageXY.y - lastFramePageXY.y
         _event.vx = vx || 0
         _event.vy = vy || 0
 
@@ -189,8 +189,8 @@
       }
     }
 
-    function getEventClientXY(e) {
-      var touch, clientX, clientY
+    function getEventPageXY(e) {
+      var touch, pageX, pageY
 
       if (e.type.indexOf("touch") > -1) {
         if (e.type === 'touchmove') {
@@ -198,14 +198,14 @@
         } else {
           touch = e.changedTouches[0]  
         }
-        clientX = touch.clientX
-        clientY = touch.clientY
+        pageX = touch.pageX
+        pageY = touch.pageY
       } else {
-        clientX = e.clientX
-        clientY = e.clientY
+        pageX = e.pageX
+        pageY = e.pageY
       }
 
-      return {x: clientX, y: clientY}
+      return {x: pageX, y: pageY}
     }
   }
 
