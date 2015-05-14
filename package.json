@@ -6,9 +6,9 @@
     "type": "git",
     "url": "https://github.com/kuroguo/k-drag"
   },
+  "main": "dist/k-drag.js",
   "keywords": [
     "k-drag",
-    "kuro"
   ],
   "author": "kuro",
   "license": "MIT",
