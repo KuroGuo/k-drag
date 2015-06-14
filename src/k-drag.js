@@ -95,6 +95,8 @@
       }
 
       function dragFrame(time) {
+        requestedFrameToken = requestAnimationFrame(dragFrame)
+        
         var _event
         var newVx, newVy
 
@@ -120,8 +122,6 @@
           lastFramePageXY = pageXY
           lastFrameTime = time
         }
-
-        requestedFrameToken = requestAnimationFrame(dragFrame)
       }
 
       function dragend(e) {
