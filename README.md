@@ -5,7 +5,7 @@ High performance drag component.
 ### Install
 
 ```bash
-$ npm install k-drag --save
+$ npm install k-drag
 ```
 
 ### Quick Example
