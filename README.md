@@ -52,7 +52,7 @@ $ npm install k-drag
 
 * k.dragstart
 * k.drag
-* k.dragSync(sync version of k.drag, k.drag is a async event)
+* k.dragSync(sync version of k.drag, k.drag is an async event)
 * k.dragend
 
 ### Event Arguments
